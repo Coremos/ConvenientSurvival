@@ -1,5 +1,4 @@
 """ Text adventure game 
-    @insta = @lakshaytalkstocomputer
-    @year  = 2018
+    @year  = 2022
 """
-__author__ = "lakshaytalkstocomputer"
+__author__ = "TeamCodeIt"
