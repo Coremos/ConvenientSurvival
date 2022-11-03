@@ -7,6 +7,30 @@ import World
 from Player import Player
 from collections import OrderedDict
 
+def rendering(player):
+    map = World.get_map()
+    for y in range(0, len(map)):
+        for x in range(0, len(map[0])):
+            if (x == player.x and y == player.y):
+                print('@', end = '')
+            else:
+                print(get_tile_text(map[y][x]), end = '')
+        print()
+            
+def get_tile_text(tile):
+    if isinstance(tile, World.EnemyTile):
+        return 'E'
+    elif isinstance(tile, World.StartTile):
+        return 'S'
+    elif isinstance(tile, World.TraderTile):
+        return 'T'
+    elif isinstance(tile, World.FindGoldTile):
+        return 'G'
+    elif isinstance(tile, World.VictoryTile):
+        return 'V'
+    else:
+        return ' '
+
 def play():
     print()
     print()
@@ -14,7 +38,9 @@ def play():
     World.parse_world_dsl()
     player = Player()
     while player.is_alive() and not player.victory:
+        print()
         room = World.tile_at(player.x, player.y)
+        rendering(player)
         print(room.intro_text())
         room.modify_player(player)
         if player.is_alive() and not player.victory:
