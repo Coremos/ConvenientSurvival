@@ -206,6 +206,9 @@ world_dsl = """
 |FG|  |EN|  |FG|
 """
 
+def get_map():
+    return world_map
+
 world_map = []
 
 tile_type_dict = {"VT": VictoryTile,
