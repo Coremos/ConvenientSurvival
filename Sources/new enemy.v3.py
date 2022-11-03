@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -- coding: utf-8 --
 import random
 
 class Enemy:
@@ -12,24 +12,24 @@ class Enemy:
         return self.hp > 0
         
     def doAttack(self):
-        print(str(self.name) + "°¡ ¾Æ±º¿¡°Ô " + str(self.attack) + "¸¸Å­ °ø°İÇß´Ù!")
+        print(str(self.name) + "ê°€ ì•„êµ°ì—ê²Œ " + str(self.attack) + "ë§Œí¼ ê³µê²©í–ˆë‹¤!")
         print("-----------------")
 
     def hit(self, damage):
         defense = damage - self.defense
         r = random.random()
         if r < self.evasion :
-            print("¾Æ±ºÀÌ" + str(self.name) + "¿¡°Ô " + str(defense) + "ÀÇ µ¥¹ÌÁö¸¦ ÁÖ¾ú´Ù!")
+            print("ì•„êµ°ì´" + str(self.name) + "ì—ê²Œ " + str(defense) + "ì˜ ë°ë¯¸ì§€ë¥¼ ì£¼ì—ˆë‹¤!")
             self.hp -= defense
         else:
-            print(str(self.name) + "ÀÌ °ø°İÀ» È¸ÇÇÇÏ¿´½À´Ï´Ù.")
+            print(str(self.name) + "ì´ ê³µê²©ì„ íšŒí”¼í•˜ì˜€ìŠµë‹ˆë‹¤.")
         if  self.hp <= 0:
-            print(str(self.name) + "´Â ÀÌ¹Ì ½ÃÃ¼ÀÌ´Ù.....")
+            print(str(self.name) + "ëŠ” ì´ë¯¸ ì‹œì²´ì´ë‹¤.....")
         else:
             if self.hp <= 0:
-                print(str(self.name) + "°¡ Á×¾ú´Ù!")
+                print(str(self.name) + "ê°€ ì£½ì—ˆë‹¤!")
             else :
-                print("ÇöÀç" + str(self.name) + "ÀÇ Ã¼·ÂÀº " + str(self.hp) + "ÀÌ´Ù.")
+                print("í˜„ì¬" + str(self.name) + "ì˜ ì²´ë ¥ì€ " + str(self.hp) + "ì´ë‹¤.")
         print("-----------------")
 
 class Boss:
