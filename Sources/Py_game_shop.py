@@ -23,5 +23,7 @@ print("\n")
 print("Lollipop - Max HP and Defensice power increases by one: 5Gold")
 print("\n")
 print("Small Chocolate - Increases Offensive power by 1: 5Gold")
-print("Medium Chocolate - Increases offensive power by 2: 7Gold")
-print("Big Cholo
+print("Medium Chocolate - Increases Offensive power by 2: 7Gold")
+print("Big Chocolate - Increases Offensive power by 3: 9Gold")
+print("\n")
+print("Butane - 
