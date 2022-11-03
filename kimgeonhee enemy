@@ -7,6 +7,22 @@ class Enemy:
 
     def is_alive(self):
         return self.hp > 0
+        
+    def doAttack(self):
+        print(str(self.name) + "가 아군에게 " + str(self.attack) + "만큼 공격했다!")
+        print("-----------------")
+
+    def hit(self, damage):
+        print("아군이" + str(self.name) + "에게 " + str(damage) + "의 데미지를 주었다!")
+        if  self.hp <= 0:
+            print(str(self.name) + "는 이미 시체이다.....")
+        else:
+            self.hp -= damage
+            if self.hp <= 0:
+                print(str(self.name) + "가 죽었다!")
+            else :
+                print("현재" + str(self.name) + "의 체력은 " + str(self.hp) + "이다.")
+        print("-----------------")
 
 class Boss:
     def __init__(self):
@@ -17,6 +33,22 @@ class Boss:
 
     def is_alive(self):
         return self.hp > 0
+
+        def doAttack(self):
+        print(str(self.name) + "가 아군에게 " + str(self.attack) + "만큼 공격했다!")
+        print("-----------------")
+
+    def hit(self, damage):
+        print("아군이" + str(self.name) + "에게 " + str(damage) + "의 데미지를 주었다!")
+        if  self.hp <= 0:
+            print(str(self.name) + "는 이미 시체이다.....")
+        else:
+            self.hp -= damage
+            if self.hp <= 0:
+                print(str(self.name) + "가 죽었다!")
+            else :
+                print("현재" + str(self.name) + "의 체력은 " + str(self.hp) + "이다.")
+        print("-----------------")
 
 class Zombie(Enemy):
     def __init__(self):
@@ -71,3 +103,6 @@ class Dragon(Boss):
         self.defense = 30
         self.gold = 300
         self.evasion = 1.5
+
+zombie = Zombie()
+zombie.hit(15)
