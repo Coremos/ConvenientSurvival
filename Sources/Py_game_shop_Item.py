@@ -1,3 +1,4 @@
+
 # -- coding: utf-8 --
 
 print("----------------------------------------------------------------")
@@ -14,13 +15,13 @@ print("2:Cola - Recover 50% of your Max HP: 5Gold")
 print("\n")
 print("3:Energe Drink - Damage increases by 5%: 7Gold")
 print("\n")
-print("4:TWO Soju - Make your HP 1, but you don't get damage next turn: 15Gold")
+print("4:TWO Soju - Make your HP 1, but you don't get any damage: 15Gold")
 print("\n")
 print("5:Stick Icecream - Increas Defensice power 5%: 5Gold")
 print("\n")
-print("6:Corn Icecream - Recover HP +5 but reducing Evasion by 5% over the next turn: 7Gold")
+print("6:Corn Icecream - Recover HP +5 but reducing Evasion by 5%: 7Gold")
 print("\n")
-print("7:Potato Chip - Reducing monster's Evasion by 10% next 2 turns: 5Gold")
+print("7:Potato Chip - Reducing monster's Evasion by 10%: 5Gold")
 print("\n")
 print("8:Lollipop - Max HP and Defensice power increases by 1: 5Gold")
 print("\n")
