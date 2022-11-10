@@ -49,23 +49,23 @@ class EnemyTile(MapTile):
     def __init__(self, x, y):
         r = random.random()
         if r < 0.50:
-            self.enemy = Enemies.GiantSpider()
-            self.alive_text = "A giant Spider jumps down from " \
+            self.enemy = Enemies.Zombie()
+            self.alive_text = "A Zombie jumps down from " \
                               "its web in front of you!"
             self.dead_text = "The corpse of a dead spider rots on " \
                              "the ground."
         elif r < 0.80:
-            self.enemy = Enemies.Ogre()
-            self.alive_text = "A Ogre is blocking your path "                               "its web in front of you!"
+            self.enemy = Enemies.Skeleton()
+            self.alive_text = "A Skeleton is blocking your path "                               "its web in front of you!"
             self.dead_text = "A dead Ogre reminds you of your triumph."
         elif r < 0.95:
-            self.enemy = Enemies.BatColony()
+            self.enemy = Enemies.Ghost()
             self.alive_text = "You hear a squeaking noise growing louder" \
                               "...suddenly you are lost in a swarm of bats!"
             self.dead_text = "Dozens of dead bats are scattered on the ground"
         else:
-            self.enemy = Enemies.RockMonster()
-            self.alive_text = "You have disturbed a rock monster from his slumber! "
+            self.enemy = Enemies.Golem()
+            self.alive_text = "You have disturbed a Golem from his slumber! "
             self.dead_text = "Defeated, the monster has reverted into an ordinary rock"
 
         super().__init__(x, y)
