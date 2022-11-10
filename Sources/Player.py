@@ -5,6 +5,7 @@ __author__ = "TeamCodeIt"
 
 import Items
 import World
+import random
 
 
 class Player:
@@ -15,8 +16,10 @@ class Player:
 
         self.x = World.start_tile_location[0]
         self.y = World.start_tile_location[1]
-        self.hp = 100
-        self.gold = 5
+        self.hp = 10
+        self.defense = 1
+        self.evasion = 0.90
+        self.gold = 100
         self.victory = False
 
     def is_alive(self):
@@ -64,12 +67,22 @@ class Player:
         best_weapon = self.most_powerful_weapon()
         room = World.tile_at(self.x, self.y)
         enemy = room.enemy
+        defense = best_weapon.damage - enemy.defense
         print("You can use {} against!".format(best_weapon.name, enemy.name))
-        enemy.hp -= best_weapon.damage
-        if not enemy.is_alive():
-            print("You killed {}!".format(enemy.name))
+        r = random.random()
+        if r < enemy.evasion :
+            print("The player gave the " + str(enemy.name) + str(defense) + " damage!")
+            enemy.hp -= defense
         else:
-            print("{} HP is {}.".format(enemy.name, enemy.hp))
+            print("The " + str(enemy.name) + "avoided damage.")
+        if  self.hp <= 0:
+            print("The" + str(enemy.name) + " is dead.")
+        else:
+            if self.hp <= 0:
+                print("The " + str(enemy.name) + " is dead.")
+            else :
+                print("The" + str(enemy.name) + " now have a physical strength of " + str(enemy.hp))
+        print("-----------------")
 
     def heal(self):
         consumables = [item for item in self.inventory if isinstance(item, Items.Consumable)]
@@ -96,4 +109,3 @@ class Player:
     def trade(self):
         room = World.tile_at(self.x, self.y)
         room.check_if_trade(self)
-
