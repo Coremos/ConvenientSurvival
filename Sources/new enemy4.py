@@ -27,7 +27,7 @@ class Enemy:
                 print("Player is dead.")
             else :
                 print("The current player's physical strength is " + str(Player.hp))
-        print("-----------------")
+        print("----------------------------------------------------------------")
 
 
 class Boss:
