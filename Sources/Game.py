@@ -3,20 +3,28 @@
 """
 __author__ = "TeamCodeIt"
 
+import os
 import World
+from Input import KeyType
+import Input
 from Player import Player
 from collections import OrderedDict
+
+# def logic():
+# Input
+
 
 def rendering(player):
     map = World.get_map()
     for y in range(0, len(map)):
         for x in range(0, len(map[0])):
             if (x == player.x and y == player.y):
-                print('@', end = '')
+                print('@', end='')
             else:
-                print(get_tile_text(map[y][x]), end = '')
+                print(get_tile_text(map[y][x]), end='')
         print()
-            
+
+
 def get_tile_text(tile):
     if isinstance(tile, World.EnemyTile):
         return 'E'
@@ -31,7 +39,47 @@ def get_tile_text(tile):
     else:
         return ' '
 
+
+def input(room: World.MapTile, player: Player):
+    while True:
+        Input.update_input()
+        if player.inventory:
+            if Input.keyDown[KeyType.B]:
+                player.print_inventory()
+                return
+        if (isinstance(room, World.TraderTile)):
+            if (Input.keyDown[KeyType.A]):
+                player.trade()
+                return
+        if (isinstance(room, World.EnemyTile) and room.enemy.is_alive()):
+            if (Input.keyDown[KeyType.A]):
+                player.attack()
+                return
+        else:
+            if (Input.keyDown[KeyType.UP]):
+                if World.tile_at(room.x, room.y - 1):
+                    player.move_north()
+                    return
+            if (Input.keyDown[KeyType.DOWN]):
+                if World.tile_at(room.x, room.y + 1):
+                    player.move_south()
+                    return
+            if (Input.keyDown[KeyType.LEFT]):
+                if World.tile_at(room.x - 1, room.y):
+                    player.move_west()
+                    return
+            if (Input.keyDown[KeyType.RIGHT]):
+                if World.tile_at(room.x + 1, room.y):
+                    player.move_east()
+                    return
+
+
+def initialize():
+    Input.initialize_key()
+
+
 def play():
+    initialize()
     print()
     print()
     print("Escape from Cave Terror!")
@@ -44,9 +92,11 @@ def play():
         print(room.intro_text())
         room.modify_player(player)
         if player.is_alive() and not player.victory:
-            choose_action(room, player)
+            #choose_action(room, player)
+            input(room, player)
         elif not player.is_alive():
             print("Your journey has come to an early end! ")
+
 
 def get_available_actions(room, player):
     actions = OrderedDict()
@@ -71,10 +121,12 @@ def get_available_actions(room, player):
 
     return actions
 
+
 def action_adder(action_dict, hotkey, action, name):
     action_dict[hotkey.lower()] = action
     action_dict[hotkey.upper()] = action
     print("{} : {}".format(hotkey, name))
+
 
 def choose_action(room, player):
     action = None
@@ -86,5 +138,6 @@ def choose_action(room, player):
             action()
         else:
             print("Invalid action!")
+
 
 play()
