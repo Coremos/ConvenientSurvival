@@ -30,6 +30,16 @@ class Enemy:
         print("-----------------")
 
 
+class MBoss:
+    def __init__(self):
+        raise NotImplementedError("DO not create raw Boss objects.")
+
+    def __str__(self):
+        return self.name
+
+    def is_alive(self):
+        return self.hp > 0
+
 class Boss:
     def __init__(self):
         raise NotImplementedError("DO not create raw Boss objects.")
@@ -76,7 +86,7 @@ class Golem(Enemy):
         self.gold = 200
         self.evasion = 1
 
-class Hobgoblin(Boss):
+class Hobgoblin(MBoss):
     def __init__(self):
         self.name = "Hobgoblin"
         self.hp = 100
